@@ -1,6 +1,8 @@
 const express = require("express");
 const SSE = require("express-sse");
+const compression = require("compression");
 const cors = require("cors");
+
 const ElevatorController = require("./elevator-controller");
 
 const port = 8080;
@@ -11,6 +13,7 @@ elevatorController.start();
 
 app.use(cors());
 app.use(express.json());
+app.use(compression());
 
 elevatorController.on("move", (evt) => {
   sse.send(evt);
