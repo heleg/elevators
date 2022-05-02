@@ -63,32 +63,32 @@ class ElevatorController extends EventEmitter {
   _proceed(elevator) {
     if (typeof elevator.targetFloor === "undefined") {
       return elevator;
-    } else {
-      let newState;
-      if (elevator.floor < elevator.targetFloor) {
-        newState = {
-          ...elevator,
-          floor: elevator.floor + 1,
-          state: "up",
-        };
-      } else if (elevator.floor > elevator.targetFloor) {
-        newState = {
-          ...elevator,
-          floor: elevator.floor - 1,
-          state: "down",
-        };
-      } else {
-        newState = {
-          ...elevator,
-          floor: elevator.targetFloor,
-          targetFloor: undefined,
-          state: "stopped",
-        };
-      }
-      console.log(`Moved elevator ${newState.id} to floor ${newState.floor}`);
-      this.emit("move", newState);
-      return newState;
     }
+
+    let newState;
+    if (elevator.floor < elevator.targetFloor) {
+      newState = {
+        ...elevator,
+        floor: elevator.floor + 1,
+        state: "up",
+      };
+    } else if (elevator.floor > elevator.targetFloor) {
+      newState = {
+        ...elevator,
+        floor: elevator.floor - 1,
+        state: "down",
+      };
+    } else {
+      newState = {
+        ...elevator,
+        floor: elevator.targetFloor,
+        targetFloor: undefined,
+        state: "stopped",
+      };
+    }
+    console.log(`Moved elevator ${newState.id} to floor ${newState.floor}`);
+    this.emit("move", newState);
+    return newState;
   }
 }
 

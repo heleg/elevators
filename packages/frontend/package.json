@@ -1,14 +1,18 @@
 {
   "name": "frontend",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "check-types": "tsc"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.27.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
-    "redux-saga": "^1.1.3"
+    "react-redux-actions-hook": "^1.1.18",
+    "redux-saga": "^1.1.3",
+    "urlcat": "^2.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.8",
