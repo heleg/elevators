@@ -7,6 +7,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
+    "lodash": "^4.17.21",
+    "nes.css": "^2.3.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
@@ -15,6 +17,7 @@
     "urlcat": "^2.0.4"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "parcel": "^2.5.0"

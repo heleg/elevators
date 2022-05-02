@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
+import building from "./features/building/buildingSlice";
 import ping from "./features/ping/pingSlice";
 import elevators from "./features/elevators/elevatorsSlice";
 import ui from "./features/ui/uiSlice";
@@ -14,6 +15,7 @@ const store = configureStore({
     ui,
     ping,
     elevators,
+    building,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false }).concat([sagaMiddleware]),
