@@ -7,7 +7,7 @@ import { sendPing } from "./actions";
 
 export function* pingSaga() {
   yield takeLatest(sendPing, function* () {
-    const { data } = yield apiCall("/ping", {
+    const { data } = yield* apiCall<string>("/ping", {
       name: RequestNames.PING,
     });
 

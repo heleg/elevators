@@ -9,6 +9,10 @@ import store from "./store";
 
 const root = document.getElementById("root");
 
+if (!root) {
+  throw new Error("React root not found");
+}
+
 createRoot(root).render(
   <StrictMode>
     <Provider store={store}>

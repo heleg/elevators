@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
+import axios, { AxiosResponse, Method } from "axios";
 import urlcat from "urlcat";
-import { call, put, StrictEffect } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
 import { requestEnd, RequestNames, requestStart } from "../features/ui/uiSlice";
 
@@ -8,17 +8,17 @@ const request = axios.create({
   baseURL: "http://localhost:8080/",
 }).request;
 
-interface ApiCallOptions {
+interface ApiCallOptions<D> {
   method?: Method;
-  data?: AxiosRequestConfig["data"];
+  data?: D;
   params?: Record<string, unknown>;
   name?: RequestNames;
 }
 
-function* apiCallFn(
+function* apiCall<T = any, D = any>(
   url: string,
-  { method = "get", params, data, name }: ApiCallOptions = {}
-): Generator<StrictEffect> {
+  { method = "get", params = {}, data, name }: ApiCallOptions<D> = {}
+) {
   if (!url.startsWith("/")) {
     throw new Error("Invalid url format");
   }
@@ -27,7 +27,7 @@ function* apiCallFn(
     yield put(requestStart({ name }));
   }
 
-  const response = yield call(request, {
+  const response: AxiosResponse<T, D> = yield call(request, {
     url: urlcat(url, params),
     method,
     data,
@@ -39,8 +39,5 @@ function* apiCallFn(
 
   return response;
 }
-
-const apiCall = (url: string, apiCallOptions?: ApiCallOptions) =>
-  call<typeof apiCallFn>(apiCallFn, url, apiCallOptions);
 
 export default apiCall;

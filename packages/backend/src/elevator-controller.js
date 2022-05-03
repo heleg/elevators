@@ -8,14 +8,13 @@ class ElevatorController extends EventEmitter {
     super();
     this.numElevators = numElevators;
     this.numFloors = numFloors;
-    this.elevators = [];
-    for (let i = 0; i < numElevators; i++) {
-      this.elevators.push({
-        id: "elv" + i,
-        floor: 0,
-        state: "stopped",
-      });
-    }
+    this.elevators = Array.from({ length: numElevators }, (_, i) => ({
+      id: "elv" + i,
+      // Randomize elevators floors
+      floor: Math.floor(Math.random() * (numFloors + 1)),
+      state: "stopped",
+    }));
+
     console.debug("Initial state", this.elevators);
   }
 

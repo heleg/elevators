@@ -4,6 +4,10 @@
     "jsx": "react",
     "lib": ["DOM","ESNext"],
     "noImplicitAny": true,
-    "noEmit": true
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true
   }
 }

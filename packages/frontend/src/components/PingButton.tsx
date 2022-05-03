@@ -19,7 +19,10 @@ const PingButton = () => {
   const text = isPong ? "Pong!" : isSubmitting ? "..." : "Ping!";
 
   return (
-    <button disabled={isSubmitting || isPong} onClick={actions.sendPing}>
+    <button
+      disabled={isSubmitting || isPong}
+      onClick={() => actions.sendPing()}
+    >
       {text}
     </button>
   );

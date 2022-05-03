@@ -3,7 +3,8 @@
   "plugins": [
     "prettier",
     "hooks",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "redux-saga"
   ],
   "extends": [
     "plugin:prettier/recommended"
@@ -17,12 +18,17 @@
     "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": 2,
 
+    "redux-saga/yield-effects": 2,
+    "redux-saga/no-yield-in-race": 2,
+
     "hooks/sort": [
       2,
       {
         "groups": [
           "useActions",
-          "useAppSelector"
+          "useSetState",
+          "useAppSelector",
+          "useEffect"
         ]
       }
     ]
